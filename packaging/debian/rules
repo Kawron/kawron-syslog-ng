@@ -81,7 +81,7 @@ DH_OPTIONS += -Nsyslog-ng-mod-grpc
 endif
 
 ifneq ($(filter sng-nobpf,$(DEB_BUILD_PROFILES)),)
-DH_OPTIONS += -Nsyslog-mod-bpf
+DH_OPTIONS += -Nsyslog-ng-mod-bpf
 BPF_CONFIGURE_OPTS = --disable-ebpf
 else
 BPF_CONFIGURE_OPTS = --enable-ebpf
