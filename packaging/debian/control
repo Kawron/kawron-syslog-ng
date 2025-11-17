@@ -46,7 +46,12 @@ Build-Depends: debhelper (>= 10~),
                libprotoc-dev <!sng-nogrpc>,
                libabsl-dev <!sng-nogrpc>,
                libprotobuf-dev <!sng-nogrpc>,
-               libgrpc++-dev <!sng-nogrpc>
+               libgrpc++-dev <!sng-nogrpc>,
+               clang <!sng-nobpf>,
+               libbpf-dev <!sng-nobpf>,
+               linux-tools-common <!sng-nobpf>,
+               linux-tools-generic <!sng-nobpf>,
+               bpftool <!sng-nobpf> <!sng-nobpf>
 Build-Conflicts: autoconf2.13
 Standards-Version: 4.4.1
 Homepage: https://www.syslog-ng.com/
@@ -783,6 +788,13 @@ Description: Enhanced system logging daemon (GRPC plugins)
   * Google Pub/Sub
   * Grafana Loki
   * ClickHouse
+
+Package: syslog-ng-mod-bpf
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, syslog-ng-core (>= ${source:Version}), syslog-ng-core (<< ${source:Version}.1~)
+Conflicts: syslog-ng-mod-grpc
+Description: Enhanced system logging daemon (eBPF plugins)
 
 Package: syslog-ng-mod-cloud-auth
 Architecture: any
